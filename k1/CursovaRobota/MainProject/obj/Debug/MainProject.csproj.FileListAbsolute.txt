@@ -1,0 +1,10 @@
+D:\Desktop\k1\CursovaRobota\MainProject\obj\Debug\MainProject.csprojAssemblyReference.cache
+D:\Desktop\k1\CursovaRobota\MainProject\obj\Debug\MainProject.csproj.CoreCompileInputs.cache
+D:\Desktop\k1\CursovaRobota\MainProject\bin\Debug\MainProject.exe.config
+D:\Desktop\k1\CursovaRobota\MainProject\bin\Debug\MainProject.exe
+D:\Desktop\k1\CursovaRobota\MainProject\bin\Debug\MainProject.pdb
+D:\Desktop\k1\CursovaRobota\MainProject\bin\Debug\ClassLibrary.dll
+D:\Desktop\k1\CursovaRobota\MainProject\bin\Debug\ClassLibrary.pdb
+D:\Desktop\k1\CursovaRobota\MainProject\obj\Debug\MainProject.csproj.CopyComplete
+D:\Desktop\k1\CursovaRobota\MainProject\obj\Debug\MainProject.exe
+D:\Desktop\k1\CursovaRobota\MainProject\obj\Debug\MainProject.pdb
