@@ -8,14 +8,21 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
+    public enum NewsCategory
+    {
+        Sport,
+        Games,
+        IT,
+        Music
+    }
 
-    public class NewsLib
+    public class NewsLib : INewsLib
     {
         private List<string> authors = new List<string>();
 
         private List<Novelty> Novelties = new List<Novelty>();
 
-        public void AddNovelty(string text, string author, string tag, string date)
+        public void AddNovelty(string text, string author, string tag, string date, NewsCategory newstype)
         {
             var newnowelty = new Novelty(text, author, tag, date);
             Novelties.Add(newnowelty);

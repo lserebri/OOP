@@ -12,7 +12,8 @@ namespace MainProject
     {
         static void Main(string[] args)
         {
-            var backend = new NewsLib();
+
+            INewsLib backend = new NewsLib();
             bool flag = true;
             while (flag)
             {
@@ -46,7 +47,7 @@ namespace MainProject
             }
         }
 
-        public static void Registration(NewsLib backend)
+        public static void Registration(INewsLib backend)
         {
             Console.Write("Please enter your future nickname: ");
             string nick = Console.ReadLine();
@@ -74,7 +75,7 @@ namespace MainProject
                     Console.WriteLine(novelty.AllText);
         }
 
-        public static void SearchNewsControl(NewsLib backend)
+        public static void SearchNewsControl(INewsLib backend)
         {
             bool flag = true;
             while (flag)
@@ -125,7 +126,7 @@ namespace MainProject
             }
         }
 
-        public static void NewNews(NewsLib backend)
+        public static void NewNews(INewsLib backend)
         {
             bool Flag = true;
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -149,16 +150,19 @@ namespace MainProject
                 while (flag)
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nThis is the stage of news entry\n\nSelect a category\n1 - About Sport\t2 - About Games\nPress 0 to return in main menu");
+                    Console.WriteLine("\nThis is the stage of news entry\n\nSelect a category\n1 - About Sport\t2 - About Games\t3 - About Games\nPress 0 to return in main menu");
                     Console.Write("--> ");
                     int Key = Convert.ToInt32(Console.ReadLine());
                     switch (Key)
                     {
                         case 1:
-                            SportHead(CurrentNick, backend);
+                            Head(CurrentNick, backend, NewsCategory.Sport);
                             break;
                         case 2:
-                            GamesHead(CurrentNick, backend);
+                            Head(CurrentNick, backend, NewsCategory.Games);
+                            break;
+                        case 3:
+                            Head(CurrentNick, backend, NewsCategory.IT);
                             break;
                     }
                     if (Key != 1 && Key != 2 && Key != 0)
@@ -186,49 +190,16 @@ namespace MainProject
                 return false;
         }
 
-        public static void GamesHead(string CurrentNick, NewsLib backend)
+        public static void Head(string CurrentNick, INewsLib backend, NewsCategory newstype)
         {
-            Console.Write("You have chosen a heading cars\nPlease enter your news tags: ");
+            Console.Write($"You have chosen a heading {newstype}\nPlease enter your news tags: ");
             string NewsTag = Console.ReadLine();
             if (TextChecker(NewsTag))
             {
                 Console.WriteLine("If you want to return to main menu PRESS 0\nIf you want to continue PRESS 1");
                 int Key = Convert.ToInt32(Console.ReadLine());
                 if (Key == 1)
-                    GamesHead(CurrentNick, backend);
-                else if (Key == 0)
-                    return;
-            }
-            else
-            {
-                Console.WriteLine($"Your tags {NewsTag}\nEnter news text");
-                string NewsText = Console.ReadLine();
-                if (TextChecker(NewsText))
-                {
-                    Console.WriteLine("If you want to return to main menu PRESS 0\nIf you want to continue PRESS 1");
-                    int Key = Convert.ToInt32(Console.ReadLine());
-                    if (Key == 1) 
-                        GamesHead(CurrentNick, backend);
-                }
-                else
-                {
-                    Console.WriteLine("Enter the time of publication of the news");
-                    string NewsTime = Console.ReadLine();
-                    backend.AddNovelty(NewsText, CurrentNick, NewsTag, NewsTime);
-                }
-            }
-        }
-
-        public static void SportHead(string CurrentNick, NewsLib backend)
-        {
-            Console.Write("You have chosen a heading cars\nPlease enter your news tags: ");
-            string NewsTag = Console.ReadLine();
-            if (TextChecker(NewsTag))
-            {
-                Console.WriteLine("If you want to return to main menu PRESS 0\nIf you want to continue PRESS 1");
-                int Key = Convert.ToInt32(Console.ReadLine());
-                if (Key == 1)
-                    SportHead(CurrentNick, backend);
+                    Head(CurrentNick, backend, newstype);
                 else if (Key == 0)
                     return;
             }
@@ -241,7 +212,7 @@ namespace MainProject
                     Console.WriteLine("If you want to return to main menu PRESS 0\nIf you want to continue PRESS 1");
                     int Key = Convert.ToInt32(Console.ReadLine());
                     if (Key == 1)
-                        SportHead(CurrentNick, backend);
+                        Head(CurrentNick, backend, newstype);
                 }
                 else
                 {
@@ -251,36 +222,5 @@ namespace MainProject
                 }
             }
         }
-
-        //public static void SportHead(string CurrentNick, NewsLib backend)
-        //{
-        //    Console.Write("You have chosen a heading sports\nPlease enter your news tags: ");
-        //    string NewsTag = Console.ReadLine();
-        //    if (TextChecker(NewsTag))
-        //    {
-        //        Console.WriteLine("If you want to return to main menu PRESS 0\nIf you want to continue PRESS 1");
-        //        int Key = Convert.ToInt32(Console.ReadLine());
-        //        if (Key == 1) SportHead(CurrentNick, backend);
-        //        else Control();
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"Your tags {NewsTag}\nEnter news text");
-        //        string NewsText = Console.ReadLine();
-        //        if (TextChecker(NewsText))
-        //        {
-        //            Console.WriteLine("If you want to return to main menu PRESS 0\nIf you want to continue PRESS 1");
-        //            int Key = Convert.ToInt32(Console.ReadLine());
-        //            if (Key == 1) SportHead(CurrentNick);
-        //            else Control();
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Enter the time of publication of the news");
-        //            string NewsTime = Console.ReadLine();
-        //            backend.AddNovelty(NewsText, CurrentNick, NewsTag, NewsTime);
-        //        }
-        //    }
-        //}
     }
 }
