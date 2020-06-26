@@ -4,3 +4,6 @@ D:\Desktop\k1\CursovaRobota\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompi
 D:\Desktop\k1\CursovaRobota\ClassLibrary\obj\Debug\ClassLibrary.dll
 D:\Desktop\k1\CursovaRobota\ClassLibrary\obj\Debug\ClassLibrary.pdb
 D:\Desktop\k1\CursovaRobota\ClassLibrary\obj\Debug\ClassLibrary.csprojAssemblyReference.cache
+D:\Desktop\k1\CursovaRobota\ClassLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\Desktop\k1\CursovaRobota\ClassLibrary\bin\Debug\Newtonsoft.Json.xml
+D:\Desktop\k1\CursovaRobota\ClassLibrary\obj\Debug\ClassLibrary.csproj.CopyComplete

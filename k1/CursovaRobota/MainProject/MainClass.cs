@@ -82,7 +82,7 @@ namespace MainProject
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("\nThis is the search stage of the news\tSelect the search parameter(s)");
-                Console.WriteLine("Press [1] to search by nick\nPress [2] to search by tag\nPress [3] to search by time\nPress [0] to exit");
+                Console.WriteLine("Press [1] to search by nick\nPress [2] to search by tag\nPress [3] to search by time\nPress [4] to search by heading\nPress [0] to exit");
                 Console.Write("--> ");
                 int i = Convert.ToInt32(Console.ReadLine());
                 switch (i)
@@ -110,6 +110,15 @@ namespace MainProject
                         if (!TextChecker(tempdate))
                         {
                             OutputNovelty(backend.FindNoveltyWithDate(tempdate));
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("This is news search by heading\nEnter heading to search");
+                        string tempheading = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        if (!TextChecker(tempheading))
+                        {
+                            OutputNovelty(backend.FindNoveltyWithHeading(tempheading));
                         }
                         break;
                 }
@@ -150,7 +159,7 @@ namespace MainProject
                 while (flag)
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nThis is the stage of news entry\n\nSelect a category\n1 - About Sport\t2 - About Games\t3 - About Games\nPress 0 to return in main menu");
+                    Console.WriteLine("\nThis is the stage of news entry\n\nSelect a category\n1 - About Sport\t2 - About Games\t3 - About It\nPress 0 to return in main menu");
                     Console.Write("--> ");
                     int Key = Convert.ToInt32(Console.ReadLine());
                     switch (Key)
@@ -218,7 +227,7 @@ namespace MainProject
                 {
                     Console.WriteLine("Enter the time of publication of the news");
                     string NewsTime = Console.ReadLine();
-                    backend.AddNovelty(NewsText, CurrentNick, NewsTag, NewsTime);
+                    backend.AddNovelty(NewsText, CurrentNick, NewsTag, NewsTime, newstype);
                 }
             }
         }

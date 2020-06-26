@@ -1,4 +1,14 @@
-﻿namespace ClassLibrary
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ClassLibrary
 {
 
     public class Novelty
@@ -20,5 +30,7 @@
             Date = date;
             AllText = $"About {Name} : " + "< " + Tag + " >" + "\n" + Text + "\n" + "At " + Date + " hours\n" + Author;
         }
+
     }
+
 }

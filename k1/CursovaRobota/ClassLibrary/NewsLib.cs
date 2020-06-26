@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Net.Http.Headers;
 using System.Runtime.Remoting.Services;
 using System.Text;
@@ -24,7 +26,7 @@ namespace ClassLibrary
 
         public void AddNovelty(string text, string author, string tag, string date, NewsCategory newstype)
         {
-            var newnowelty = new Novelty(text, author, tag, date);
+            var newnowelty = new Novelty(text, author, tag, date, newstype);
             Novelties.Add(newnowelty);
         }
         public void Registration(string nick)
@@ -44,6 +46,20 @@ namespace ClassLibrary
         public List<Novelty> GetLatest(int count = 5)
         {
             return Novelties.OrderByDescending(x => x.Date).Take(count).ToList();
+        }
+
+        public List<Novelty> FindNoveltyWithHeading(string tempheading)
+        {
+            List<Novelty> novelty = new List<Novelty>();
+            for (int i = 0; i < Novelties.Count; i++)
+            {
+                if (Novelties[i].Newstype.ToString() == tempheading)
+                {
+                    novelty.Add(Novelties[i]);
+                }
+            }
+
+            return novelty;
         }
 
         public List<Novelty> FindNoveltyWithTag(string tag)
